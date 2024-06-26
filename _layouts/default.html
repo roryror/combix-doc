@@ -64,12 +64,7 @@
             transition: all 0.3s ease-in-out;
         }
         nav ul ul li {
-            display: block;
-            padding: 10px;
-            color: #333;
             width: 300px;
-            border-radius: 5px;
-            text-decoration: none;
         }
         nav ul ul li a {
             display: block;
@@ -122,7 +117,7 @@
                             {% for item in items %}
                                 <li class="nav-item {% if item.url == page.url %}current{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
                             {% endfor %}
-                             <li class="nav-item onclick="closeMenu(this)">Close</li>
+                             <li class="nav-item onclick="closeMenu(this)"><a href="page.url">close</a></li>
                         </ul>
                     </li>
                 {% endfor %}
