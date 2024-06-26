@@ -117,7 +117,7 @@
                             {% for item in items %}
                                 <li class="nav-item {% if item.url == page.url %}current{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
                             {% endfor %}
-                            <div class="close" onclick="closeMenu(this)">Close</div>
+                             <li class="nav-item onclick="closeMenu(this)">Close</li>
                         </ul>
                     </li>
                 {% endfor %}
