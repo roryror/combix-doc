@@ -52,7 +52,7 @@
         }
         nav ul ul {
             display: none;
-            position: absolute;
+            position: relative;
             top: 100%;
             left: 0;
             width: 300px;
@@ -147,18 +147,26 @@
         });
         // Handle submenu visibility
         const navItems = document.querySelectorAll('nav .nav-item.top-level');
-        
-        navItems.forEach(item => {
-            item.addEventListener('mouseover', function () {
-                this.classList.add('open');
-            });
-        
-            item.addEventListener('mouseout', function (event) {
-                if (!this.contains(event.relatedTarget) || event.relatedTarget.tagName.toLowerCase() !== 'a') {
-                    this.classList.remove('open');
-                }
-            });
-        });
+let delayTimer; // 延迟关闭菜单的计时器
+
+navItems.forEach(item => {
+    item.addEventListener('mouseover', function () {
+        if (this.classList.contains('open')) {
+            this.classList.remove('open'); // 如果菜单已经打开，则关闭它
+        } else {
+            this.classList.add('open'); // 打开当前菜单
+        }
+    });
+
+    item.addEventListener('mouseout', function () {
+        const self = this;
+        clearTimeout(delayTimer); // 清除之前的延迟关闭计时器
+        delayTimer = setTimeout(function () {
+            // 保持菜单开启状态
+            self.classList.add('open');
+        }, 500); // 设置延迟时间，单位为毫秒
+    });
+});
     </script>
 </body>
 </html>
