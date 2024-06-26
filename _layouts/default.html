@@ -114,7 +114,6 @@
                             {% for item in items %}
                                 <li class="nav-item {% if item.url == page.url %}current{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
                             {% endfor %}
-                             <li class="nav-item onclick="closeMenu(this)">close</li>
                         </ul>
                     </li>
                 {% endfor %}
@@ -144,10 +143,6 @@
             document.body.classList.toggle("nav-open");
         });
         // 关闭当前二级菜单
-        function closeMenu(element) {
-            const submenu = element.parentNode;
-            submenu.classList.remove('open');
-        }
         // Handle submenu visibility
         const navItems = document.querySelectorAll('nav .nav-item.top-level');
         let delayTimer; // 延迟关闭菜单的计时器
