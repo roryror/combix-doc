@@ -74,6 +74,14 @@
             border-radius: 5px;
             text-decoration: none;
         }
+         nav ul ul li div {
+            display: block;
+            padding: 10px;
+            color: #333;
+            width: 300px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
         nav ul ul li a:hover {
             background-color: #f0f0f0;
         }
@@ -117,7 +125,7 @@
                             {% for item in items %}
                                 <li class="nav-item {% if item.url == page.url %}current{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
                             {% endfor %}
-                             <li class="nav-item onclick="closeMenu(this)"><a href="page.url">close</a></li>
+                             <li class="nav-item onclick="closeMenu(this)"><div>close</div></li>
                         </ul>
                     </li>
                 {% endfor %}
