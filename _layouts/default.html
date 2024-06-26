@@ -52,7 +52,7 @@
         }
         nav ul ul {
             display: none;
-            position: relative;
+            position: absolute;
             top: 100%;
             left: 0;
             width: 300px;
@@ -110,7 +110,7 @@
             <ul>
                 {% assign grouped = site.docs | group_by: 'category' %}
                 {% for group in grouped %}
-                    <li class="nav-item top-level {% if group.name == page.category %}current{% endif %}">
+                    <li class="nav-item top-level {% if group.name == page.category % and group.items | where: 'url', page.url %}open{% endif %}">
                         {% assign items = group.items | sort: 'order' %}
                         <a href="{{ site.baseurl }}{{ items.first.url }}">{{ group.name }}</a>
                         <ul>
@@ -153,8 +153,8 @@
                 this.classList.add('open');
             });
         
-            item.addEventListener('mouseout', function () {
-                if (!this.contains(event.relatedTarget)) {
+            item.addEventListener('mouseout', function (event) {
+                if (!this.contains(event.relatedTarget) || event.relatedTarget.tagName.toLowerCase() !== 'a') {
                     this.classList.remove('open');
                 }
             });
