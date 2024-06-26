@@ -38,6 +38,18 @@
             background-color: #fff;
             z-index: -1000; 
         }
+        .toc {
+            position: fixed;
+            top: 150px; /* 设置页内目录位置低一些 */
+            right: 0;
+            width: 200px;
+            height: calc(100vh - 150px); /* 高度自适应 */
+            overflow-y: auto;
+            padding: 20px;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            z-index: 1000;
+        }
         .main {
             padding: 20px;
             flex: 1;
@@ -86,18 +98,6 @@
         }
         nav ul li.open > ul {
             display: block;
-        }
-        .toc {
-            position: fixed;
-            top: 150px; /* 设置页内目录位置低一些 */
-            right: 0;
-            width: 200px;
-            height: calc(100vh - 150px); /* 高度自适应 */
-            overflow-y: auto;
-            padding: 20px;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            z-index: 1000;
         }
         .toc ul {
             list-style: none;
