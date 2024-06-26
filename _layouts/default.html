@@ -224,6 +224,25 @@
                 tocList.appendChild(li);
             });
         }
+        window.addEventListener('scroll', function () {
+            const headers = document.querySelectorAll('.content h1, .content h2');
+            let currentActive = null;
+
+            headers.forEach(header => {
+                const rect = header.getBoundingClientRect();
+                if (rect.top <= 150 && rect.bottom >= 150) {
+                    currentActive = header;
+                }
+            });
+
+            const tocLinks = document.querySelectorAll('.toc a');
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (currentActive && link.getAttribute('href') === '#' + currentActive.id) {
+                    link.classList.add('active');
+                }
+            });
+        });
 
         generateTOC();
     </script>
