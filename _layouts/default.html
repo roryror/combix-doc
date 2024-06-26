@@ -58,8 +58,8 @@
         nav ul li:hover > ul {
             display: block;
         }
-        nav ul li:hover > ul {
-            max-height: 500px; /* Adjust as needed */
+        nav ul li.open > ul {
+            display: block;
         }
     </style>
 </head>
@@ -122,6 +122,20 @@
     <script>
         document.getElementById("open-nav").addEventListener("click", function () {
             document.body.classList.toggle("nav-open");
+        });
+        // Handle submenu visibility
+        const navItems = document.querySelectorAll('nav .nav-item.top-level');
+        
+        navItems.forEach(item => {
+            item.addEventListener('mouseover', function () {
+                this.classList.add('open');
+            });
+        
+            item.addEventListener('mouseout', function () {
+                if (!this.contains(event.relatedTarget)) {
+                    this.classList.remove('open');
+                }
+            });
         });
     </script>
 </body>
