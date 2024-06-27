@@ -244,18 +244,6 @@
             const content = document.querySelector('.content');
             const headers = content.querySelectorAll('h1, h2');
             
-            const pageTitle = document.querySelector('.page-header h1').innerText;
-            const pageTitleId = 'page-title'; // 定义页面标题的ID，用于锚点链接
-        
-            // 添加页面标题作为第一个项目
-            const titleLi = document.createElement('li');
-            const titleA = document.createElement('a');
-            titleA.href = '#' + pageTitleId;
-            titleA.innerText = pageTitle;
-            titleA.classList.add('title'); 
-            titleLi.appendChild(titleA);
-            tocList.appendChild(titleLi);
-            
             headers.forEach(header => {
                 const id = header.innerText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
                 header.id = id;
