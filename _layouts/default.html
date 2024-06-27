@@ -73,8 +73,6 @@
             padding: 0;
             margin: 0;
             overflow: hidden;
-            max-height: 0; /* 初始时折叠 */
-            transition: max-height 0.3s ease-in-out;
         }
         nav ul ul li {
             width: 300px;
@@ -91,10 +89,9 @@
         nav ul ul li a:hover {
             background-color: #f0f0f0;
         }
-        nav ul ul {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
+        nav ul li:hover > ul {
+            display: block;
+            transition: all 0.3s ease-in-out;
         }
         .toc {
             margin-top: 110px; /* 设置页内目录位置低一些 */
@@ -209,46 +206,10 @@
     </section>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    const navItems = document.querySelectorAll('nav > ul > li');
-
-    let timer = null;
-
-    navItems.forEach(navItem => {
-        const link = navItem.querySelector('a');
-
-        // 鼠标进入事件监听器
-        link.addEventListener('mouseenter', function () {
-            // 设置定时器，在0.5秒后执行判断二级菜单状态的函数
-            timer = setTimeout(function () {
-                const subMenu = navItem.querySelector('ul');
-
-                // 判断二级菜单状态并进行切换
-                if (subMenu.style.maxHeight && subMenu.style.maxHeight !== '0px') {
-                    subMenu.style.maxHeight = '0px'; // 如果已经打开，则关闭
-                } else {
-                    subMenu.style.maxHeight = subMenu.scrollHeight + 'px'; // 如果未打开，则打开
-                }
-            }, 500);
-        });
-
-        // 鼠标离开事件监听器
-        link.addEventListener('mouseleave', function () {
-            // 清除定时器，保持二级菜单的状态
-            clearTimeout(timer);
-        });
-
-        // 鼠标悬停在二级菜单上时保持显示
-        navItem.querySelector('ul').addEventListener('mouseenter', function () {
-            clearTimeout(timer); // 清除定时器，保持二级菜单打开状态
-        });
-    });
-});
-
         document.getElementById("open-nav").addEventListener("click", function () {
             document.body.classList.toggle("nav-open");
         });
-                
+
         function generateTOC() {
             const tocList = document.getElementById('toc-list');
             const content = document.querySelector('.content');
