@@ -139,7 +139,7 @@
             font-family: 'Open Sans', sans-serif;
             font-size: 14px;
         }
-        .toc .toc-first-h1 {
+        .toc .toc-title {
             font-size: 26px;
             font-weight: bold;
         }
@@ -245,12 +245,8 @@
             const content = document.querySelector('.content');
             const headers = content.querySelectorAll('h1, h2');
 
-            let pageTitle = '';
-            const firstH1 = content.querySelector('h1');
-            if (firstH1) {
-                pageTitle = firstH1.innerText;
-                firstH1.id = 'page-title'; // 设置第一个h1标题的ID作为页面标题的锚点链接
-            }
+            const pageTitle = '{{ page.title }}';
+            const pageTitleId = 'page-title';
 
             // 添加页面标题（第一个h1）作为第一个项目，使用不同的样式
             if (pageTitle) {
@@ -258,7 +254,7 @@
                 const titleA = document.createElement('a');
                 titleA.href = '#page-title';
                 titleA.innerText = pageTitle;
-                titleA.classList.add('toc-first-h1'); // 添加自定义类名
+                titleA.classList.add('toc-title'); // 添加自定义类名
                 titleLi.appendChild(titleA);
                 tocList.appendChild(titleLi);
             }
