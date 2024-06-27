@@ -50,6 +50,7 @@
             -ms-overflow-style: none;  /* 适用于 Internet Explorer 和 Edge */
             scrollbar-width: none;  /* 适用于 Firefox */
             transform: translateX(-180px); 
+            transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out; /* 添加过渡效果 */
         }
         nav ul {
             width: 300px;
@@ -72,7 +73,7 @@
             padding: 0;
             margin: 0;
             overflow: hidden;
-            transition: all 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
         }
         nav ul ul li {
             width: 300px;
