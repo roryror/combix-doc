@@ -133,8 +133,8 @@
         .toc ul li {
             margin-bottom: 10px;
         }
-        .toc h2 {
-            font-size: 18px; /* 设置标题字体大小 */
+        .toc .title a  {
+            font-size: 16px; /* 设置标题字体大小 */
             color: #666; /* 设置标题颜色 */
         }
         .toc a {
@@ -259,6 +259,7 @@
                 const titleA = document.createElement('a');
                 titleA.href = '#page-title';
                 titleA.innerText = pageTitle;
+                titleA.classList.add('title'); 
                 titleLi.appendChild(titleA);
                 tocList.appendChild(titleLi);
             }
