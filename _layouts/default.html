@@ -94,7 +94,10 @@
             overflow: hidden;
             transition: max-height 0.3s ease-in-out;
         }
-        
+        nav ul li ul {
+            display: block;
+            height: 0px; /* 根据需要调整最大高度 */
+        }
         nav ul li:hover > ul {
             max-height: 500px; /* 根据需要调整最大高度 */
         }
