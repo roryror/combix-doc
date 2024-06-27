@@ -89,7 +89,7 @@
         nav ul ul li a:hover {
             background-color: #f0f0f0;
         }
-        nav ul li.open > ul {
+        nav ul li:hover > ul {
             display: block;
             transition: all 0.3s ease-in-out;
         }
@@ -208,15 +208,6 @@
     <script>
         document.getElementById("open-nav").addEventListener("click", function () {
             document.body.classList.toggle("nav-open");
-        });
-    
-        const navItems = document.querySelectorAll('nav .nav-item.top-level');
-        let delayTimer; // 延迟关闭菜单的计时器
-        
-        navItems.forEach(item => {
-            item.addEventListener('mouseover', function () {
-                this.classList.add('open'); // 打开当前菜单
-            });
         });
 
         function generateTOC() {
