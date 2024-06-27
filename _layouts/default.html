@@ -140,7 +140,7 @@
             font-size: 14px;
         }
         .toc .toc-title {
-            font-size: 26px;
+            font-size: 16px;
             font-weight: bold;
         }
         .toc a:hover {
@@ -252,7 +252,7 @@
             if (pageTitle) {
                 const titleLi = document.createElement('li');
                 const titleA = document.createElement('a');
-                titleA.href = '#page-title';
+                titleA.href = '#page-header';
                 titleA.innerText = pageTitle;
                 titleA.classList.add('toc-title'); // 添加自定义类名
                 titleLi.appendChild(titleA);
