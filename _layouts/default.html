@@ -73,11 +73,10 @@
             padding: 0;
             margin: 0;
             overflow: hidden;
-            transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
         }
         nav ul ul li {
             width: 300px;
-            transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
         nav ul ul li a {
             display: block;
@@ -89,9 +88,7 @@
         }
         nav ul ul li a:hover {
             background-color: #f0f0f0;
-        }
-        nav ul li:hover > ul {
-            display: block;
+            transition: all 0.3s ease-in-out;
         }
         nav ul li.open > ul {
             display: block;
