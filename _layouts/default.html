@@ -21,6 +21,7 @@
     <style>
         body {
             display: flex;
+            position: fixed;
         }
         header {
             position: fixed;
@@ -37,14 +38,6 @@
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             background-color: #fff;
             z-index: -1000; 
-        }
-        .toc {
-            margin-top: 120px; /* 设置页内目录位置低一些 */
-            width: 200px;
-            height: 720px;
-            overflow-y: auto;
-            padding: 20px;
-            background-color: #fff;
         }
         .main {
             padding: 20px;
@@ -94,6 +87,14 @@
         }
         nav ul li.open > ul {
             display: block;
+        }
+        .toc {
+            margin-top: 120px; /* 设置页内目录位置低一些 */
+            width: 200px;
+            height: 720px;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #fff;
         }
         .toc ul {
             list-style: none;
@@ -189,8 +190,7 @@
         document.getElementById("open-nav").addEventListener("click", function () {
             document.body.classList.toggle("nav-open");
         });
-        // 关闭当前二级菜单
-        // Handle submenu visibility
+    
         const navItems = document.querySelectorAll('nav .nav-item.top-level');
         let delayTimer; // 延迟关闭菜单的计时器
         
