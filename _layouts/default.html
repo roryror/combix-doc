@@ -89,9 +89,14 @@
         nav ul ul li a:hover {
             background-color: #f0f0f0;
         }
+        nav ul ul {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        
         nav ul li:hover > ul {
-            display: block;
-            transition: all 0.3s ease-in-out;
+            max-height: 500px; /* 根据需要调整最大高度 */
         }
         .toc {
             margin-top: 110px; /* 设置页内目录位置低一些 */
