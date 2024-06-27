@@ -73,10 +73,10 @@
             padding: 0;
             margin: 0;
             overflow: hidden;
+            transition: all 0.3s ease-in-out;
         }
         nav ul ul li {
             width: 300px;
-            transition: all 0.3s ease-in-out;
         }
         nav ul ul li a {
             display: block;
@@ -91,7 +91,9 @@
         }
         nav ul li:hover > ul {
             display: block;
-            transition: all 0.3s ease-in-out;
+        }
+        nav ul li.open > ul {
+            display: block;
         }
         .toc {
             margin-top: 110px; /* 设置页内目录位置低一些 */
@@ -208,6 +210,28 @@
     <script>
         document.getElementById("open-nav").addEventListener("click", function () {
             document.body.classList.toggle("nav-open");
+        });
+    
+        const navItems = document.querySelectorAll('nav .nav-item.top-level');
+        let delayTimer; // 延迟关闭菜单的计时器
+        
+        navItems.forEach(item => {
+            item.addEventListener('mouseover', function () {
+                if (this.classList.contains('open')) {
+                   
+                } else {
+                    this.classList.add('open'); // 打开当前菜单
+                }
+            });
+        
+            item.addEventListener('mouseout', function () {
+                const self = this;
+                clearTimeout(delayTimer); // 清除之前的延迟关闭计时器
+                delayTimer = setTimeout(function () {
+                    // 保持菜单开启状态
+                    self.classList.add('open');
+                }, 500); // 设置延迟时间，单位为毫秒
+            });
         });
 
         function generateTOC() {
