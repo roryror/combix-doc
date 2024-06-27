@@ -88,7 +88,6 @@
         }
         nav ul ul li a:hover {
             background-color: #f0f0f0;
-            transition: all 0.3s ease-in-out;
         }
         nav ul li.open > ul {
             display: block;
@@ -216,20 +215,7 @@
         
         navItems.forEach(item => {
             item.addEventListener('mouseover', function () {
-                if (this.classList.contains('open')) {
-                   
-                } else {
-                    this.classList.add('open'); // 打开当前菜单
-                }
-            });
-        
-            item.addEventListener('mouseout', function () {
-                const self = this;
-                clearTimeout(delayTimer); // 清除之前的延迟关闭计时器
-                delayTimer = setTimeout(function () {
-                    // 保持菜单开启状态
-                    self.classList.add('open');
-                }, 500); // 设置延迟时间，单位为毫秒
+                this.classList.add('open'); // 打开当前菜单
             });
         });
 
