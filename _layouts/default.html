@@ -247,7 +247,7 @@
             
             // 找到页面中的第一个h1标题作为页面标题
             let pageTitle = '';
-            const firstH1 = content.querySelector('h1');
+            const firstH1 = content.querySelector('h2');
             if (firstH1) {
                 pageTitle = firstH1.innerText;
                 firstH1.id = 'page-title'; // 设置第一个h1标题的ID作为页面标题的锚点链接
