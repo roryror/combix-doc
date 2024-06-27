@@ -49,6 +49,7 @@
             overflow-y: auto;
             -ms-overflow-style: none;  /* 适用于 Internet Explorer 和 Edge */
             scrollbar-width: none;  /* 适用于 Firefox */
+            transform: translateX(-180px); 
         }
         nav ul {
             width: 300px;
@@ -94,7 +95,7 @@
             display: block;
         }
         .toc {
-            margin-top: 120px; /* 设置页内目录位置低一些 */
+            margin-top: 110px; /* 设置页内目录位置低一些 */
             width: 200px; /* 初始宽度 */
             height: 720px;
             overflow-y: auto;
@@ -111,6 +112,9 @@
             transform: translateX(0); /* 悬停时展开 */
             width: 200px; /* 悬停时宽度 */
             opacity: 1; /* 悬停时字体可见 */
+        }
+        .toc:hover .main{
+            transform: translateX(0);
         }
         .toc ul {
             list-style: none;
