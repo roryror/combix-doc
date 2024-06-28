@@ -238,13 +238,6 @@
                 }, 1000); // 设置延迟时间为1秒
             });
         });
-        
-        // 防止鼠标快速移动到另一个菜单项时菜单立即关闭
-        document.querySelectorAll('nav').forEach(nav => {
-            nav.addEventListener('mouseover', function () {
-                clearTimeout(delayTimer); // 如果鼠标移到菜单上，清除关闭计时器
-            });
-        });
 
 
         function generateTOC() {
