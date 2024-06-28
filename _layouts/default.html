@@ -218,46 +218,60 @@
     </section>
 
     <script>
-        document.getElementById("open-nav").addEventListener("click", function () {
-            document.body.classList.toggle("nav-open");
-        });
-    
-        const navItems = document.querySelectorAll('nav .nav-item.top-level');
-        let delayTimer;
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('nav .nav-item.top-level');
+            let delayTimer;
+            let isSubMenuHovered = false; // 标记是否在二级菜单上
         
-        navItems.forEach(item => {
-            item.addEventListener('mouseover', function () {
-                this.classList.add('open'); // 打开当前菜单
-            });
-        
-            item.addEventListener('mouseout', function () {
-            const self = this;
-            const subMenu = this.querySelector('ul');
-            const currentUrl = window.location.pathname;
-
-            // 检查当前菜单项是否包含当前页面链接
-            let containsCurrentPage = false;
-            const subMenuItems = self.querySelectorAll('ul li a');
-            subMenuItems.forEach(subItem => {
-                if (subItem.getAttribute('href') === currentUrl) {
-                    containsCurrentPage = true;
+            // 鼠标移动到二级菜单时，设置标志为true
+            document.addEventListener('mouseover', function(event) {
+                if (event.target.closest('nav .nav-item.top-level ul')) {
+                    isSubMenuHovered = true;
                 }
             });
-
-            // 如果当前菜单项不包含当前页面链接，则设置过渡效果
-            if (subMenu && !containsCurrentPage) {
-                subMenu.style.opacity = '0';
-                subMenu.style.maxHeight = '0';
-
-                // 设置延迟时间，确保过渡效果有时间完成
-                delayTimer = setTimeout(function () {
-                    self.classList.remove('open'); // 关闭当前菜单
-                    subMenu.style.opacity = ''; // 重置透明度
-                    subMenu.style.maxHeight = ''; // 重置最大高度
-                }, 300); // 设置延迟时间为过渡效果的持续时间
-            }
+        
+            // 鼠标移出二级菜单时，设置标志为false
+            document.addEventListener('mouseout', function(event) {
+                if (!event.target.closest('nav .nav-item.top-level ul')) {
+                    isSubMenuHovered = false;
+                }
+            });
+        
+            navItems.forEach(item => {
+                item.addEventListener('mouseover', function () {
+                    this.classList.add('open'); // 打开当前菜单
+                });
+        
+                item.addEventListener('mouseout', function () {
+                    const self = this;
+                    const subMenu = this.querySelector('ul');
+                    const currentUrl = window.location.pathname;
+        
+                    // 检查当前菜单项是否包含当前页面链接
+                    let containsCurrentPage = false;
+                    const subMenuItems = self.querySelectorAll('ul li a');
+                    subMenuItems.forEach(subItem => {
+                        if (subItem.getAttribute('href') === currentUrl) {
+                            containsCurrentPage = true;
+                        }
+                    });
+        
+                    // 如果当前菜单项不包含当前页面链接，并且指针不在二级菜单上，则设置过渡效果
+                    if (subMenu && !containsCurrentPage && !isSubMenuHovered) {
+                        subMenu.style.opacity = '0';
+                        subMenu.style.maxHeight = '0';
+        
+                        // 设置延迟时间，确保过渡效果有时间完成
+                        delayTimer = setTimeout(function () {
+                            self.classList.remove('open'); // 关闭当前菜单
+                            subMenu.style.opacity = ''; // 重置透明度
+                            subMenu.style.maxHeight = ''; // 重置最大高度
+                        }, 300); // 设置延迟时间为过渡效果的持续时间
+                    }
+                });
+            });
         });
-        });
+
 
 
         function generateTOC() {
