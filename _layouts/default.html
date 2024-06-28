@@ -229,6 +229,7 @@
             const navItems = document.querySelectorAll('nav .nav-item.top-level');
         
             navItems.forEach(item => {
+                item.classList.add('open');
                 let delayTimer;
                 let isSubMenuHovered = false; // 标记是否在当前菜单项的二级菜单上
         
