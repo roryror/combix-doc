@@ -236,7 +236,12 @@
                     clearTimeout(delayTimer); // 清除之前的延迟关闭计时器display: block;
                     this.classList.add('open'); // 打开当前菜单
                 });
-        
+                items.self.querySelectorAll('ul li a').forEach(subItem => {
+                        if (subItem.getAttribute('href') === currentUrl) {
+                            clearTimeout(delayTimer);
+                            this.classList.add('open'); // 打开当前菜单
+                        }
+                    });
                 item.addEventListener('mouseout', function (event) {
                     const self = this;
                     const subMenu = this.querySelector('ul');
@@ -251,7 +256,7 @@
                             containsCurrentPage = true;
                             this.classList.add('open'); // 打开当前菜单
                         }
-                    }});
+                    });
         
                     // 检查是否在当前菜单项的二级菜单上
                     if (event.relatedTarget && event.relatedTarget.closest('ul') === subMenu) {
