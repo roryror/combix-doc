@@ -179,15 +179,8 @@
 
             <ul>
                 {% assign grouped = site.docs | group_by: 'category' %}
-                {% assign catorder = site.docs | where: 'title', 'catorder' | first %}
-                {% if catorder %}
-                    <p>catorder.md found</p>
-                {% else %}
-                    <p>catorder.md not found</p>
-                {% endif %}
-                {% if catorder %}
-                    {% assign ordered_categories = catorder.content | strip_newlines | split: '\n# ' %}
-                    {% for category in ordered_categories %}
+                {% assign ordered_categories = "How to|Nodes|Overview|Q&A|Models|Templates" | split: '|' %}
+                {% for category in ordered_categories %}
                         Category: {{ category }} <br>
                         {% for group in grouped %}
                             Group Name: {{ group.name }} <br>
@@ -203,14 +196,9 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
-                            {% else %}
-                                <p>catorder.md not found</p>
-                            {% endif %}
-                        {% endfor %}
+                        {% endif %}
                     {% endfor %}
-                {% else %}
-                    <p>未找到 catorder.md 文件或其内容为空。</p>
-                {% endif %}
+                {% endfor %}
             </ul>
 
             <ul>
