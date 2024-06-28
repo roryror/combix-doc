@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +71,6 @@
             z-index: 900; 
         }
         nav ul ul {
-            max-height: 1000px;
             display: block;
             position: relative;
             top: 100%;
@@ -79,9 +79,15 @@
             padding: 0;
             margin: 0;
             overflow: hidden;
-            opacity: 1; /* 添加透明度 */
+            opacity: 0; /* 添加透明度 */
+            max-height: 0; /* 添加最大高度 */
             transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out; /* 添加过渡效果 */
             z-index: 900; 
+        }
+        
+        nav ul li.open > ul {
+            display: block;
+            opacity: 1; 
         }
         nav ul ul li {
             width: 300px;
@@ -96,6 +102,10 @@
             z-index: 900; 
         }
         nav ul ul li a:hover {
+            z-index: 900; 
+        }
+        nav ul li:hover > ul {
+            display: block;
             z-index: 900; 
         }
         .toc {
@@ -222,7 +232,9 @@
                 let delayTimer;
                 let isSubMenuHovered = false; // 标记是否在当前菜单项的二级菜单上
         
-                item.addEventListener('mouseover', function (event) {
+                item.addEventListener('mouseover', function () {
+                    clearTimeout(delayTimer); // 清除之前的延迟关闭计时器display: block;
+                    this.classList.add('open'); // 打开当前菜单
                     this.querySelector('ul').style.maxHeight = '1000px';
                 });
                 item.addEventListener('mouseout', function (event) {
@@ -244,6 +256,11 @@
                     if (subMenu && !containsCurrentPage && !isSubMenuHovered) {
                         subMenu.style.opacity = '0';
                         subMenu.style.maxHeight = '0';
+                         delayTimer = setTimeout(function () {
+                            self.classList.remove('open'); // 关闭当前菜单
+                            subMenu.style.opacity = ''; // 重置透明度
+                            subMenu.style.maxHeight = ''; // 重置最大高度
+                        }, 300); // 设置延迟时间为过渡效果的持续时间
                     }
                 });
             });
