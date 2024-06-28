@@ -179,11 +179,9 @@
 
             <ul>
                 {% assign grouped = site.docs | group_by: 'category' %}
-                {% assign ordered_categories = "How to|Nodes|Overview|Q&A|Models|Templates" | split: '|' %}
+                {% assign ordered_categories = "Overview|How to|Nodes|Models|Templates|Q&A" | split: '|' %}
                 {% for category in ordered_categories %}
-                        Category: {{ category }} <br>
                         {% for group in grouped %}
-                            Group Name: {{ group.name }} <br>
                            {% if group.name == category %}
                                 <li class="nav-item top-level">
                                     <a href="#">{{ category }}</a> <!-- 使用 category 替代 group.name -->
