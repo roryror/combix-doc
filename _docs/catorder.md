@@ -1,5 +1,3 @@
-# Catorder
-
 ## How to
 ## Nodes
 ## Overview
