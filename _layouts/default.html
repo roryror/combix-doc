@@ -181,6 +181,11 @@
                 {% assign grouped = site.docs | group_by: 'category' %}
                 {% assign catorder = site.pages | where: 'name', 'catorder.md' | first %}
                 {% if catorder %}
+                    <p>catorder.md found</p>
+                {% else %}
+                    <p>catorder.md not found</p>
+                {% endif %}
+                {% if catorder %}
                     {% assign ordered_categories = catorder.content | strip_newlines | split: '\n## ' %}
                     {% for category in ordered_categories %}
                         {% for group in grouped %}
