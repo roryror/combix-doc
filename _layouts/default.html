@@ -254,7 +254,7 @@
         
                     // 如果当前菜单项不包含当前页面链接，并且指针不在当前菜单项的二级菜单上，则设置过渡效果
                     if (subMenu && !containsCurrentPage && !isSubMenuHovered) {
-                        subMenu.style.opacity = '0';
+                        subMenu.style.opacity = '1';
                         subMenu.style.maxHeight = '0';
                         self.classList.remove('open'); // 关闭当前菜单 
                     }
