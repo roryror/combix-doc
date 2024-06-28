@@ -1,5 +1,5 @@
 ---
-title:catorder
+title: catorder
 category:
 order: 1
 ---
