@@ -256,10 +256,7 @@
                     if (subMenu && !containsCurrentPage && !isSubMenuHovered) {
                         subMenu.style.opacity = '0';
                         subMenu.style.maxHeight = '0';
-                         delayTimer = setTimeout(function () {
-                            self.classList.remove('open'); // 关闭当前菜单
-                            subMenu.style.maxHeight = ''; // 重置最大高度
-                        }, 300); // 设置延迟时间为过渡效果的持续时间
+                        self.classList.remove('open'); // 关闭当前菜单 
                     }
                 });
             });
