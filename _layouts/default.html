@@ -78,8 +78,16 @@
             padding: 0;
             margin: 0;
             overflow: hidden;
-            transition: all 0.3s ease-in-out;
+            opacity: 0; /* 添加透明度 */
+            max-height: 0; /* 添加最大高度 */
+            transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out; /* 添加过渡效果 */
             z-index: 900; 
+        }
+        
+        nav ul li.open > ul {
+            display: block;
+            opacity: 1; 
+            max-height: 1000px; 
         }
         nav ul ul li {
             width: 300px;
@@ -97,10 +105,6 @@
             z-index: 900; 
         }
         nav ul li:hover > ul {
-            display: block;
-            z-index: 900; 
-        }
-        nav ul li.open > ul {
             display: block;
             z-index: 900; 
         }
@@ -219,26 +223,29 @@
         });
     
         const navItems = document.querySelectorAll('nav .nav-item.top-level');
-        let delayTimer; // 延迟关闭菜单的计时器
+        let delayTimer;
         
         navItems.forEach(item => {
             item.addEventListener('mouseover', function () {
-                if (this.classList.contains('open')) {
-                   
-                } else {
-                    this.classList.add('open'); // 打开当前菜单
-                }
+                clearTimeout(delayTimer); // 清除之前的延迟关闭计时器
+                this.classList.add('open'); // 打开当前菜单
             });
         
             item.addEventListener('mouseout', function () {
                 const self = this;
-                clearTimeout(delayTimer); // 清除之前的延迟关闭计时器
                 delayTimer = setTimeout(function () {
-                    // 保持菜单开启状态
-                    self.classList.add('open');
-                }, 500); // 设置延迟时间，单位为毫秒
+                    self.classList.remove('open'); // 关闭当前菜单
+                }, 1000); // 设置延迟时间为1秒
             });
         });
+        
+        // 防止鼠标快速移动到另一个菜单项时菜单立即关闭
+        document.querySelectorAll('nav').forEach(nav => {
+            nav.addEventListener('mouseover', function () {
+                clearTimeout(delayTimer); // 如果鼠标移到菜单上，清除关闭计时器
+            });
+        });
+
 
         function generateTOC() {
             const tocList = document.getElementById('toc-list');
