@@ -266,10 +266,10 @@
         
                         // 设置延迟时间，确保过渡效果有时间完成
                         delayTimer = setTimeout(function () {
+                            self.classList.remove('open'); // 关闭当前菜单
                             subMenu.style.opacity = '';
                             subMenu.style.maxHeight = '';
                         }, 300); // 设置延迟时间为过渡效果的持续时间
-                        self.classList.remove('open'); // 关闭当前菜单
                     }
                 });
             });
