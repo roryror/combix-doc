@@ -194,6 +194,7 @@
                         {% for group in grouped %}
                             Group Name: {{ group.name }} <br>
                            {% if group.name == category %}
+                                 Group Name: {{ group.name }} <br>
                                 <li class="nav-item top-level">
                                     <a href="#">{{ category }}</a> <!-- 使用 category 替代 group.name -->
                                     <ul>
