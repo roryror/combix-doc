@@ -234,9 +234,7 @@
         
                 item.addEventListener('mouseover', function () {
                     clearTimeout(delayTimer); // 清除之前的延迟关闭计时器display: block;
-                    this.querySelector('ul').style.opacity = '1';
-                    this.querySelector('ul').style.maxHeight = '1000px';
-                    this.querySelector('ul').style.display = 'block';
+                    this.classList.add('open'); // 打开当前菜单
                 });
         
                 item.addEventListener('mouseout', function (event) {
@@ -250,9 +248,7 @@
                     subMenuItems.forEach(subItem => {
                         if (subItem.getAttribute('href') === currentUrl) {
                             containsCurrentPage = true;
-                            subMenu.style.opacity = '1';
-                            subMenu.style.maxHeight = '1000px';
-                            subMenu..style.display = 'block';
+                            this.classList.add('open'); // 打开当前菜单
                         }
                     });
         
@@ -267,6 +263,11 @@
                     if (subMenu && !containsCurrentPage && !isSubMenuHovered) {
                         subMenu.style.opacity = '0';
                         subMenu.style.maxHeight = '0';
+                         delayTimer = setTimeout(function () {
+                            self.classList.remove('open'); // 关闭当前菜单
+                            subMenu.style.opacity = ''; // 重置透明度
+                            subMenu.style.maxHeight = ''; // 重置最大高度
+                        }, 300); // 设置延迟时间为过渡效果的持续时间
                     }
                 });
             });
