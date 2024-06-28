@@ -87,7 +87,6 @@
         nav ul li.open > ul {
             display: block;
             opacity: 1; 
-            max-height: 1000px; 
         }
         nav ul ul li {
             width: 300px;
@@ -235,6 +234,7 @@
                 item.addEventListener('mouseover', function () {
                     clearTimeout(delayTimer); // 清除之前的延迟关闭计时器display: block;
                     this.classList.add('open'); // 打开当前菜单
+                    this.querySelector('ul').style.maxHeight = '1000px';
                 });
                 item.addEventListener('mouseout', function (event) {
                     const self = this;
