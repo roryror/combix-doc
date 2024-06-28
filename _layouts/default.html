@@ -239,6 +239,7 @@
         
             navItems.forEach(item => {
                 item.addEventListener('mouseover', function () {
+                    clearTimeout(delayTimer); // 清除之前的延迟关闭计时器
                     this.classList.add('open'); // 打开当前菜单
                 });
         
