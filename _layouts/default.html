@@ -248,6 +248,7 @@
                     subMenuItems.forEach(subItem => {
                         if (subItem.getAttribute('href') === currentUrl) {
                             containsCurrentPage = true;
+                            this.classList.add('open'); // 打开当前菜单
                         }
                     });
         
