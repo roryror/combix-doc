@@ -227,16 +227,25 @@
         
         navItems.forEach(item => {
             item.addEventListener('mouseover', function () {
-                clearTimeout(delayTimer); // 清除之前的延迟关闭计时器
                 this.classList.add('open'); // 打开当前菜单
             });
         
             item.addEventListener('mouseout', function () {
-                const self = this;
+            const self = this;
+            const subMenu = this.querySelector('ul');
+            if (subMenu) {
+                // 设置过渡效果
+                subMenu.style.opacity = '0';
+                subMenu.style.maxHeight = '0';
+
+                // 设置延迟时间，确保过渡效果有时间完成
                 delayTimer = setTimeout(function () {
                     self.classList.remove('open'); // 关闭当前菜单
-                }, 1000); // 设置延迟时间为1秒
-            });
+                    subMenu.style.opacity = ''; // 重置透明度
+                    subMenu.style.maxHeight = ''; // 重置最大高度
+                }, 300); // 设置延迟时间为过渡效果的持续时间
+            }
+                });
         });
         // 保持当前页面对应的二级菜单处于打开状态
             const currentUrl = window.location.pathname;
