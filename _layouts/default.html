@@ -247,6 +247,7 @@
                     const subMenuItems = self.querySelectorAll('ul li a');
                     subMenuItems.forEach(subItem => {
                         if (subItem.getAttribute('href') === currentUrl) {
+                            clearTimeout(delayTimer);
                             containsCurrentPage = true;
                             this.classList.add('open'); // 打开当前菜单
                         }
