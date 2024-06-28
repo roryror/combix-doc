@@ -193,21 +193,18 @@
                         Category: {{ category }} <br>
                         {% for group in grouped %}
                             Group Name: {{ group.name }} <br>
-                            {% if group.name == category %}
-                                <ul>
-                                    <li class="nav-item top-level">
-                                        <a href="#">{{ group.name }}</a>
-                                        <ul>
-                                            {% assign items = group.items | sort: 'order' %}
-                                            Items: {{ items | inspect }} <br>
-                                            {% for item in items %}
-                                                <li class="nav-item">
-                                                    <a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </li>
-                                </ul>
+                           {% if group.name == category %}
+                                <li class="nav-item top-level">
+                                    <a href="#">{{ category }}</a> <!-- 使用 category 替代 group.name -->
+                                    <ul>
+                                        {% assign items = group.items | sort: 'order' %}
+                                        {% for item in items %}
+                                            <li class="nav-item">
+                                                <a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
                             {% endif %}
                         {% endfor %}
                     {% endfor %}
