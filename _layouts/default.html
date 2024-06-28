@@ -186,15 +186,12 @@
                     <p>catorder.md not found</p>
                 {% endif %}
                 {% if catorder %}
-                    Catorder Content: {{ catorder.content | inspect }} <br>
                     {% assign ordered_categories = catorder.content | strip_newlines | split: '\n# ' %}
-                    Ordered Categories: {{ ordered_categories | inspect }} <br>
                     {% for category in ordered_categories %}
                         Category: {{ category }} <br>
                         {% for group in grouped %}
                             Group Name: {{ group.name }} <br>
                            {% if group.name == category %}
-                                 Group Name: {{ group.name }} <br>
                                 <li class="nav-item top-level">
                                     <a href="#">{{ category }}</a> <!-- 使用 category 替代 group.name -->
                                     <ul>
@@ -206,6 +203,8 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
+                            {% else %}
+                                <p>catorder.md not found</p>
                             {% endif %}
                         {% endfor %}
                     {% endfor %}
