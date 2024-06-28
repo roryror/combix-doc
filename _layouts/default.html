@@ -186,15 +186,20 @@
                     <p>catorder.md not found</p>
                 {% endif %}
                 {% if catorder %}
+                    Catorder Content: {{ catorder.content | inspect }} <br>
                     {% assign ordered_categories = catorder.content | strip_newlines | split: '\n## ' %}
+                    Ordered Categories: {{ ordered_categories | inspect }} <br>
                     {% for category in ordered_categories %}
+                        Category: {{ category }} <br>
                         {% for group in grouped %}
-                            {% if group.categoty == category %}
+                            Group Name: {{ group.name }} <br>
+                            {% if group.name == category %}
                                 <ul>
                                     <li class="nav-item top-level">
                                         <a href="#">{{ group.name }}</a>
                                         <ul>
                                             {% assign items = group.items | sort: 'order' %}
+                                            Items: {{ items | inspect }} <br>
                                             {% for item in items %}
                                                 <li class="nav-item">
                                                     <a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
@@ -206,6 +211,8 @@
                             {% endif %}
                         {% endfor %}
                     {% endfor %}
+                {% else %}
+                    <p>未找到 catorder.md 文件或其内容为空。</p>
                 {% endif %}
             </ul>
 
