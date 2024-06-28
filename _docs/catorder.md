@@ -4,7 +4,7 @@ category:
 order: 1
 ---
 
-## How to
+How to
 ## Nodes
 ## Overview
 ## Q&A
