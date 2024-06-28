@@ -179,17 +179,28 @@
 
             <ul>
                 {% assign grouped = site.docs | group_by: 'category' %}
-                {% for group in grouped %}
-                    <li class="nav-item top-level {% if group.name == page.category % and group.items | where: 'url', page.url %}open{% endif %}">
-                        {% assign items = group.items | sort: 'order' %}
-                        <a href="{{ site.baseurl }}{{ items.first.url }}">{{ group.name }}</a>
-                        <ul>
-                            {% for item in items %}
-                                <li class="nav-item {% if item.url == page.url %}current{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% endfor %}
+                {% assign catorder = site.docs | where: 'name', 'catorder.md' | first %}
+                {% if catorder %}
+                    {% assign ordered_categories = catorder.content | strip_newlines | split: '\n## ' %}
+                    {% for category in ordered_categories %}
+                        {% assign categoryName = category | split: '\n' | first %}
+                        {% for group in grouped %}
+                            {% if group.name == categoryName %}
+                                <ul>
+                                    <li class="nav-item top-level {% if group.name == page.category % and group.items | where: 'url', page.url %}open{% endif %}">
+                                        {% assign items = group.items | sort: 'order' %}
+                                        <a href="{{ site.baseurl }}{{ items.first.url }}">{{ group.name }}</a>
+                                        <ul>
+                                            {% for item in items %}
+                                                <li class="nav-item {% if item.url == page.url %}current{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                </ul>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
             </ul>
 
             <ul>
