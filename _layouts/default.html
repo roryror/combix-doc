@@ -179,7 +179,7 @@
 
             <ul>
                 {% assign grouped = site.docs | group_by: 'category' %}
-                {% assign catorder = site.docs | where: 'title', 'catorder.md' | first %}
+                {% assign catorder = site.docs | where: 'title', 'catorder' | first %}
                 {% if catorder %}
                     <p>catorder.md found</p>
                 {% else %}
