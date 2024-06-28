@@ -308,9 +308,8 @@
             });
             
             // 检查目录中是否只有一个标题，没有其他小标题
-            if (headers.length === 1 ) {
+            if (headers.length === 0 ) {
                 document.querySelector('.toc').style.display = 'none'; // 隐藏目录部分
-                document.querySelector('.toc').style.z-index = '-1';
             }
         }
         window.addEventListener('scroll', function () {
