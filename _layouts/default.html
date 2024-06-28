@@ -238,6 +238,16 @@
                 }, 1000); // 设置延迟时间为1秒
             });
         });
+        // 保持当前页面对应的二级菜单处于打开状态
+            const currentUrl = window.location.pathname;
+            navItems.forEach(item => {
+                const subMenuItems = item.querySelectorAll('ul li a');
+                subMenuItems.forEach(subItem => {
+                    if (subItem.getAttribute('href') === currentUrl) {
+                        item.classList.add('open'); // 打开当前菜单
+                    }
+                });
+            });
 
 
         function generateTOC() {
