@@ -189,7 +189,7 @@
                     {% assign ordered_categories = catorder.content | strip_newlines | split: '\n## ' %}
                     {% for category in ordered_categories %}
                         {% for group in grouped %}
-                            {% if group.name == category %}
+                            {% if group.categoty == category %}
                                 <ul>
                                     <li class="nav-item top-level">
                                         <a href="#">{{ group.name }}</a>
