@@ -233,8 +233,19 @@
             item.addEventListener('mouseout', function () {
             const self = this;
             const subMenu = this.querySelector('ul');
-            if (subMenu) {
-                // 设置过渡效果
+            const currentUrl = window.location.pathname;
+
+            // 检查当前菜单项是否包含当前页面链接
+            let containsCurrentPage = false;
+            const subMenuItems = self.querySelectorAll('ul li a');
+            subMenuItems.forEach(subItem => {
+                if (subItem.getAttribute('href') === currentUrl) {
+                    containsCurrentPage = true;
+                }
+            });
+
+            // 如果当前菜单项不包含当前页面链接，则设置过渡效果
+            if (subMenu && !containsCurrentPage) {
                 subMenu.style.opacity = '0';
                 subMenu.style.maxHeight = '0';
 
@@ -245,18 +256,8 @@
                     subMenu.style.maxHeight = ''; // 重置最大高度
                 }, 300); // 设置延迟时间为过渡效果的持续时间
             }
-                });
         });
-        // 保持当前页面对应的二级菜单处于打开状态
-            const currentUrl = window.location.pathname;
-            navItems.forEach(item => {
-                const subMenuItems = item.querySelectorAll('ul li a');
-                subMenuItems.forEach(subItem => {
-                    if (subItem.getAttribute('href') === currentUrl) {
-                        item.classList.add('open'); // 打开当前菜单
-                    }
-                });
-            });
+        });
 
 
         function generateTOC() {
