@@ -111,20 +111,26 @@
             z-index: 900; 
         }
         .toc {
-            margin-top: 108px; 
-            width: 200px; 
-            height:100vh;
-            overflow-y: auto;
-            padding: 20px;
-            background-color: #fff;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 40px; /* 初始状态的宽度 */
+            height: 40px; /* 初始状态的高度 */
+            background-color: #ccc; /* 初始状态的背景颜色 */
+            border-radius: 5px; /* 圆角 */
+            cursor: pointer;
+            transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease; /* 添加过渡效果 */
             z-index: 700;
-            -ms-overflow-style: none;  /* 适用于 Internet Explorer 和 Edge */
-            scrollbar-width: none;  /* 适用于 Firefox */
-            transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out; /* 添加过渡效果 */
-            opacity: 0; /* 隐藏时字体透明 */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+        /* 鼠标悬停时展开目录 */
         .toc:hover {
-            width: 200px; /* 悬停时宽度 */
+            width: 200px; /* 悬停时的宽度 */
+            height: 100vh; /* 悬停时的高度 */
+            background-color: #fff; /* 悬停时的背景颜色 */
             opacity: 1; /* 悬停时字体可见 */
             z-index: 1; 
         }
