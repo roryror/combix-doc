@@ -118,22 +118,18 @@
             height: 40px; /* 初始状态的高度 */
             background-color: #ccc; /* 初始状态的背景颜色 */
             border-radius: 5px; /* 圆角 */
-            cursor: pointer;
             transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease; /* 添加过渡效果 */
             z-index: 1100;
-            overflow: hidden;
+            overflow-y: auto;
             display: flex;
-            align-items: center;
-            justify-content: center;
             opacity: 0;
         }
         /* 鼠标悬停时展开目录 */
         .toc:hover {
             width: 200px; /* 悬停时的宽度 */
-            height: 100vh; /* 悬停时的高度 */
+            height: 1000px; /* 悬停时的高度 */
             background-color: #fff; /* 悬停时的背景颜色 */
             opacity: 1; /* 悬停时字体可见 */
-            z-index: 1; 
         }
         .toc:hover + .main{
             transform: translateX(0);
