@@ -115,7 +115,7 @@
             width: 40px;
             height: 40px;
             background-color: white;
-            border-radius: 50%;
+            border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             cursor: pointer;
             z-index: 1000;
@@ -144,7 +144,7 @@
             opacity: 1; /* 悬停时字体可见 */
             z-index: 1; 
         }
-        .toc-button:hover + .main{
+        .toc-button:hover ~ .main{
             transform: translateX(40);
         }
         .toc ul {
