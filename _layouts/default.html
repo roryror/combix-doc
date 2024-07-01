@@ -222,6 +222,7 @@
     </section>
 
     <script>
+        // 点击方式打开和关闭二级菜单
         document.addEventListener('DOMContentLoaded', function() {
         const navItems = document.querySelectorAll('nav .nav-item.top-level');
 
@@ -242,7 +243,7 @@
         const toggleTocButton = document.getElementById('toggle-toc-button');
         const toc = document.querySelector('.toc');
         const main = document.querySelector('.main');
-
+        // 按钮打开和关闭页内目录
         toggleTocButton.addEventListener('click', function() {
             if (toc.style.opacity === '1') {
                 toc.style.opacity = '0';
@@ -253,11 +254,11 @@
             }
         });
 
+        // 生成页内目录
         function generateTOC() {
             const tocList = document.getElementById('toc-list');
             const content = document.querySelector('.content');
             const headers = content.querySelectorAll('h1, h2');
-
             const pageTitle = '{{ page.title }}';
             const pageTitleId = 'page-title';
 
@@ -282,7 +283,7 @@
                 tocList.appendChild(li);
             });
             
-            // 检查目录中是否只有一个标题，没有其他小标题
+            // 检查目录中是是否没有其他小标题
             if (headers.length === 0 ) {
                 const tocButton = document.getElementById('toggle-toc-button');
                 tocButton.style.display = 'none'; 
