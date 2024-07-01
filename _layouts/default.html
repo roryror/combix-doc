@@ -111,7 +111,7 @@
         .toc {
             margin-top: 108px; 
             width: 200px; /* 悬停时宽度 */
-            height: 100vh; /* 悬停时高度 */
+            height: 40px; /* 悬停时高度 */
             overflow-y: auto;
             padding: 20px;
             background-color: #fff;
@@ -121,23 +121,9 @@
             transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out; /* 添加过渡效果 */
             opacity: 0; /* 隐藏时字体透明 */
         }
-        .toc::before {
-            content: '';
-            display: block;
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background-color: #ccc; /* 设置为浅灰色 */
-            border-radius: 5px; /* 设置圆角为5像素 */
-            opacity: 1;
-        }
-        
         .toc:hover {
             opacity: 1; /* 悬停时显示 */
-        }
-        
-        .toc:hover::before {
-            display: none; /* 悬停时隐藏伪元素 */
+            height: 100vh; /* 悬停时高度 */
         }
         .toc:hover + .main{
             transform: translateX(0);
