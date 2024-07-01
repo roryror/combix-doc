@@ -298,6 +298,15 @@
                 a.innerText = header.innerText;
                 li.appendChild(a);
                 tocList.appendChild(li);
+
+                
+                // 检查是否是当前页面对应的标签
+                if (header.id === '{{ page.title | slugify }}') { // 使用 Jekyll 的 slugify 过滤器生成页面标识符
+                    const topLevelItem = header.closest('.nav-item.top-level');
+                    if (topLevelItem) {
+                        topLevelItem.classList.add('open');
+                    }
+                }
             });
             
             // 检查目录中是否只有一个标题，没有其他小标题
