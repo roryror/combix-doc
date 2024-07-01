@@ -122,11 +122,13 @@
             opacity: 0; /* 隐藏时字体透明 */
         }
         .toc::before {
-            width: 40px; /* 初始宽度 */
-            height: 40px; /* 初始高度 */
-            content: ''; /* 添加伪元素来代替实际内容 */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+            content: '';
             display: block;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #ccc; /* 设置为浅灰色 */
+            border-radius: 5px; /* 设置圆角为5像素 */
         }
         
         .toc:hover,
