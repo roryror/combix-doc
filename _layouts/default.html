@@ -108,24 +108,6 @@
             display: block;
             z-index: 900; 
         }
-        .toc-button {
-            position: fixed;
-            top: 70px; /* 根据需要调整位置 */
-            left: 320px; /* 根据需要调整位置 */
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease-in-out;
-            opacity:1;
-        }
-
-        .toc-button:hover {
-            opacity:0;
-        }
         .toc {
             margin-top: 108px; 
             width: 200px; 
@@ -139,13 +121,13 @@
             transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out; /* 添加过渡效果 */
             opacity: 0; /* 隐藏时字体透明 */
         }
-        .toc-button:hover + .toc {
+        .toc:hover {
             width: 200px; /* 悬停时宽度 */
             opacity: 1; /* 悬停时字体可见 */
             z-index: 1; 
         }
-        .shifted{
-            transform: translateX(40);
+        .toc:hover + .main{
+            transform: translateX(0);
         }
         .toc ul {
             list-style: none;
@@ -226,14 +208,12 @@
         </nav>
     </header>
 
-    <div class="toc-button"></div>
-    
     <aside class="toc">
         <ul id="toc-list">
             <!-- 页内目录项会动态生成 -->
         </ul>
     </aside>
-
+    
     <section class="main">
         <div class="page-header" id="top">
             <h2>{% if page.category %}{{ page.category }}{% else %}{{ site.title }}{% endif %}</h2>
@@ -281,21 +261,7 @@
             });
         });
 
-        // 获取 .toc-button 元素
-        const tocButton = document.querySelector('.toc-button');
-        const mainContent = document.querySelector('.main');
-        
-        // 添加鼠标悬停事件监听器
-        tocButton.addEventListener('mouseover', function() {
-            // 在 .main 元素上添加一个类，这个类会触发移动效果
-            mainContent.classList.add('shifted');
-        });
-        
-        // 添加鼠标离开事件监听器
-        tocButton.addEventListener('mouseout', function() {
-            // 移除 .main 元素上的移动效果类
-            mainContent.classList.remove('shifted');
-        });
+
 
         function generateTOC() {
             const tocList = document.getElementById('toc-list');
