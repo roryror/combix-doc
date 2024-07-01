@@ -237,40 +237,22 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const navItems = document.querySelectorAll('nav .nav-item.top-level');
-        
-            navItems.forEach(item => {
-                let delayTimer;
-                let isSubMenuHovered = false; // 标记是否在当前菜单项的二级菜单上
-        
-                item.addEventListener('mouseover', function () {
-                    this.classList.add('open'); // 打开当前菜单
-                    this.querySelector('ul').style.maxHeight = '1000px';
-                });
-                item.addEventListener('mouseout', function (event) {
-                    const self = this;
-                    const subMenu = this.querySelector('ul');
-                    const currentUrl = window.location.pathname;
-        
-                    // 检查当前菜单项是否包含当前页面链接
-                    let containsCurrentPage = false;
-        
-                    // 检查是否在当前菜单项的二级菜单上
-                    if (event.relatedTarget && event.relatedTarget.closest('ul') === subMenu) {
-                        isSubMenuHovered = true;
-                    } else {
-                        isSubMenuHovered = false;
-                    }
-        
-                    // 如果当前菜单项不包含当前页面链接，并且指针不在当前菜单项的二级菜单上，则设置过渡效果
-                    if (subMenu && !containsCurrentPage && !isSubMenuHovered) {
-                        subMenu.style.opacity = '1';
-                        subMenu.style.maxHeight = '0';
-                        self.classList.remove('open'); // 关闭当前菜单 
-                    }
-                });
+        const navItems = document.querySelectorAll('nav .nav-item.top-level');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', function(event) {
+                const isOpen = this.classList.contains('open');
+
+                if (!isOpen) {
+                    this.classList.add('open');
+                } else {
+                    this.classList.remove('open');
+                }
+
+                event.stopPropagation(); // 阻止事件冒泡，防止点击文档其他地方关闭菜单
             });
         });
+    });
 
         const toggleTocButton = document.getElementById('toggle-toc-button');
         const toc = document.querySelector('.toc');
