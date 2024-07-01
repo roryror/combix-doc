@@ -288,6 +288,7 @@
                 titleLi.appendChild(titleA);
                 tocList.appendChild(titleLi);
             }
+        }
             
             headers.forEach(header => {
                 const id = header.innerText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -306,7 +307,8 @@
                 document.querySelector('.toc').style.display = 'none'; // 隐藏目录部分
                 document.querySelector('.main').style.transform = 'translateX(60px)'; 
             }
-        }
+        });
+                            
         window.addEventListener('scroll', function () {
             const headers = document.querySelectorAll('.content h1, .content h2');
             let currentActive = null;
