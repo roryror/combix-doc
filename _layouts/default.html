@@ -144,7 +144,7 @@
             opacity: 1; /* 悬停时字体可见 */
             z-index: 1; 
         }
-        .toc-button:hover ~ .main{
+        .toc-button:hover + .main{
             transform: translateX(40);
         }
         .toc ul {
@@ -226,13 +226,13 @@
         </nav>
     </header>
 
-    <div class="toc-button"></div>
-
     <aside class="toc">
         <ul id="toc-list">
             <!-- 页内目录项会动态生成 -->
         </ul>
     </aside>
+
+    <div class="toc-button"></div>
     
     <section class="main">
         <div class="page-header" id="top">
