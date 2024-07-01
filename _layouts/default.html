@@ -254,22 +254,6 @@
             });
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // 找到当前页面对应的一级菜单项
-            const currentNavItem = document.querySelector('nav .nav-item.top-level.current');
-            
-            // 如果找到了当前页面对应的一级菜单项
-            if (currentNavItem) {
-                // 找到它的二级菜单
-                const subMenu = currentNavItem.querySelector('ul');
-                
-                // 如果找到了二级菜单，添加一个类名来展开它
-                if (subMenu) {
-                    currentNavItem.classList.add('open');
-                }
-            }
-        });
-
         const toggleTocButton = document.getElementById('toggle-toc-button');
         const toc = document.querySelector('.toc');
         const main = document.querySelector('.main');
