@@ -132,12 +132,11 @@
             opacity: 1;
         }
         
-        .toc:hover,
-        .toc.active {
+        .toc:hover {
             opacity: 1; /* 悬停时显示 */
         }
         
-        .toc.active::before {
+        .toc:hover::before {
             display: none; /* 悬停时隐藏伪元素 */
         }
         .toc:hover + .main{
