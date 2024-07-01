@@ -144,7 +144,7 @@
             opacity: 1; /* 悬停时字体可见 */
             z-index: 1; 
         }
-        .toc-button:hover + .main{
+        .main.shifted{
             transform: translateX(40);
         }
         .toc ul {
@@ -226,14 +226,14 @@
         </nav>
     </header>
 
+    <div class="toc-button"></div>
+    
     <aside class="toc">
         <ul id="toc-list">
             <!-- 页内目录项会动态生成 -->
         </ul>
     </aside>
 
-    <div class="toc-button"></div>
-    
     <section class="main">
         <div class="page-header" id="top">
             <h2>{% if page.category %}{{ page.category }}{% else %}{{ site.title }}{% endif %}</h2>
@@ -281,7 +281,21 @@
             });
         });
 
-
+        // 获取 .toc-button 元素
+        const tocButton = document.querySelector('.toc-button');
+        const mainContent = document.querySelector('.main');
+        
+        // 添加鼠标悬停事件监听器
+        tocButton.addEventListener('mouseover', function() {
+            // 在 .main 元素上添加一个类，这个类会触发移动效果
+            mainContent.classList.add('shifted');
+        });
+        
+        // 添加鼠标离开事件监听器
+        tocButton.addEventListener('mouseout', function() {
+            // 移除 .main 元素上的移动效果类
+            mainContent.classList.remove('shifted');
+        });
 
         function generateTOC() {
             const tocList = document.getElementById('toc-list');
