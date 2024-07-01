@@ -302,6 +302,8 @@
             
             // 检查目录中是否只有一个标题，没有其他小标题
             if (headers.length === 0 ) {
+                const tocButton = document.getElementById('toggle-toc-button');
+                tocButton.style.display = 'none'; // 隐藏目录按钮
                 document.querySelector('.toc').style.display = 'none'; // 隐藏目录部分
                 document.querySelector('.main').style.transform = 'translateX(60px)'; 
             }
